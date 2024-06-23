@@ -1,0 +1,673 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  //msTimer wait100;
+  //msTimer wait1000;
+  msTimer recive1000;
+  msTimer reciveWait1000;
+  msTimer controlPanel;
+  
+  msTimer wait100forCheckComPort;
+  msTimer wait1000forCheckComPort;
+  msTimer recive1000forCheckComPort;
+  msTimer reciveWait1000forCheckComPort;
+  msTimer reciveValues;
+  msTimer reciveValues2;
+  msTimer setArduino;
+  
+  
+  int sumArduinoOutput = 0;
+  int ArduinoOutputDecimal = 0;
+  
+  char text[50] = "Nothing";
+  byte buffer[50];
+  byte recivebuffer[100];
+  int recivebuffersize = 100;
+  int i;
+  int length;
+  byte reminderPorts[20];
+  int StoreComPortinNVM;
+  
+  char sysvarsVector[100][100] = {"VoltageLeftSwitch", "VoltageRightSwitch","WakeUpPin","PinPosLeft0","PinPosLeft1","PinPosLeft2","PinPosRight0","PinPosRight1","PinPosRight2"
+                                 ,"EthernetLeftLinkDown","EthernetRightLinkDown","VcanBusOff","PcanBusOff"};
+}
+
+on start
+{
+  @TestBox::CheckArduino = 0;
+}
+
+on sysvar_update TestBox::PinPosLeft0
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+ if(1 == @TestBox::PinPosLeft0)
+ {
+  snprintf(text, elcount(text), "PinPos0LeftOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+ }
+ else
+{
+   snprintf(text, elcount(text), "PinPos0LeftOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+}
+}
+}
+
+on sysvar_update TestBox::PinPosLeft1
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+ if(1 == @TestBox::PinPosLeft1)
+ {
+  snprintf(text, elcount(text), "PinPos1LeftOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+ }
+ else
+{
+   snprintf(text, elcount(text), "PinPos1LeftOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+}
+}
+}
+
+on sysvar_update TestBox::PinPosLeft2
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+ if(1 == @TestBox::PinPosLeft2)
+ {
+  snprintf(text, elcount(text), "PinPos2LeftOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+ }
+ else
+{
+   snprintf(text, elcount(text), "PinPos2LeftOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+}
+}
+}
+
+
+on sysvar_update TestBox::PinPosRight0
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+ if(1 == @TestBox::PinPosRight0)
+ {
+  snprintf(text, elcount(text), "PinPos0RightOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+ }
+ else
+{
+   snprintf(text, elcount(text), "PinPos0RightOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+}
+}
+}
+
+on sysvar_update TestBox::WakeUpPin
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+ if(1 == @TestBox::WakeUpPin)
+ {
+  snprintf(text, elcount(text), "WakeUpOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+ }
+ else
+{
+   snprintf(text, elcount(text), "WakeUpOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+}
+}
+}
+
+on sysvar_update TestBox::PinPosRight1
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+ if(1 == @TestBox::PinPosRight1)
+ {
+  snprintf(text, elcount(text), "PinPos1RightOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+ }
+ else
+{
+   snprintf(text, elcount(text), "PinPos1RightOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+}
+}
+}
+
+on sysvar_update TestBox::PinPosRight2
+{
+ if(1 == @TestBox::CheckArduino)
+ {
+//  write("time pinpos = %llu",timeNow());
+ if(1 == @TestBox::PinPosRight2)
+ {
+  snprintf(text, elcount(text), "PinPos2RightOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+//    write("PinPos2RightOn");
+ }
+ else
+{
+   snprintf(text, elcount(text), "PinPos2RightOff");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+//    write("PinPos2RightOff");
+}
+}
+}
+
+
+on sysvar_update TestBox::VoltageLeftSwitch
+{
+  
+ if(1 == @TestBox::CheckArduino)
+{
+  if(1 == @TestBox::VoltageLeftSwitch)
+  {
+     @sysvar::TestBox::VoltageLeftDisplay = 12.00;
+     snprintf(text, elcount(text), "VoltageLeftOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    
+    //setTimer(recive1000,1000);
+  }
+  else
+  {
+     @sysvar::TestBox::VoltageLeftDisplay = 0.00;
+     snprintf(text, elcount(text), "VoltageLeftOff");
+    
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+    
+    setControlPanelOff(2000);
+    //setTimer(recive1000,1000);
+  }
+}
+}
+
+on sysvar_update TestBox::VoltageRightSwitch
+{
+ if(1 == @TestBox::CheckArduino)
+{
+  if(1 == @TestBox::VoltageRightSwitch)
+  {
+     @sysvar::TestBox::VoltageRightDisplay = 12.00;
+     snprintf(text, elcount(text), "VoltageRightOn");
+     
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+     
+    setControlPanelOff(2000);
+    //setTimer(recive1000,1000);
+  }
+  else
+  {
+     @sysvar::TestBox::VoltageRightDisplay = 0.00;
+     snprintf(text, elcount(text), "VoltageRightOff");
+    
+     length=strlen(text)+1;
+     for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+     RS232Send(StoreComPortinNVM,buffer,length);
+    
+    setControlPanelOff(2000);
+    //setTimer(recive1000,1000);
+  }
+}
+}
+
+on sysvar_update TestBox::EthernetLeftLinkDown
+{
+  if(1 == @TestBox::CheckArduino)
+  {
+    if(1 == @TestBox::EthernetLeftLinkDown)
+    {
+      snprintf(text, elcount(text), "EthernetLinkDownLeftOn");
+      
+      length=strlen(text)+1;
+      for (i=0;i<length;i++) 
+      buffer[i]=text[i];
+      RS232Send(StoreComPortinNVM,buffer,length);
+      
+      setControlPanelOff(2000);
+    }
+    else
+    {
+      snprintf(text, elcount(text), "EthernetLinkDownLeftOff");
+      
+      length=strlen(text)+1;
+      for (i=0;i<length;i++) 
+      buffer[i]=text[i];
+      RS232Send(StoreComPortinNVM,buffer,length);
+      
+      setControlPanelOff(2000);
+    }
+  }
+}
+
+on sysvar_update TestBox::EthernetRightLinkDown
+{
+  if(1 == @TestBox::CheckArduino)
+  {
+    if(1 == @TestBox::EthernetRightLinkDown)
+    {
+    snprintf(text, elcount(text), "EthernetLinkDownRightOn");
+    
+    length=strlen(text)+1;
+    for (i=0;i<length;i++) 
+    buffer[i]=text[i];
+    RS232Send(StoreComPortinNVM,buffer,length);
+    
+    setControlPanelOff(2000);
+    
+//    setTimer(recive1000,1000);
+    }
+    else
+    {
+      snprintf(text, elcount(text), "EthernetLinkDownRightOff");
+      
+      length=strlen(text)+1;
+      for (i=0;i<length;i++) 
+      buffer[i]=text[i];
+      RS232Send(StoreComPortinNVM,buffer,length);
+      
+      setControlPanelOff(2000);
+      
+//      setTimer(recive1000,1000);
+    }
+  }
+}
+
+on sysvar_update TestBox::VcanBusOff
+{
+  if(1 == @TestBox::CheckArduino)
+  {
+    if(1 == @TestBox::VcanBusOff)
+    {
+    snprintf(text, elcount(text), "VCANBussOff");
+    
+    length=strlen(text)+1;
+    for (i=0;i<length;i++) 
+    buffer[i]=text[i];
+    RS232Send(StoreComPortinNVM,buffer,length);
+    
+    setControlPanelOff(2000);
+//    write("VCANBussOff");
+    }
+    else
+    {
+      snprintf(text, elcount(text), "VCANBussOn");
+      
+      length=strlen(text)+1;
+      for (i=0;i<length;i++) 
+      buffer[i]=text[i];
+      RS232Send(StoreComPortinNVM,buffer,length);
+      
+      setControlPanelOff(2000);
+//      write("VCANBussOn");
+    }
+  }
+}
+
+on sysvar_update TestBox::PcanBusOff
+{
+  if(1 == @TestBox::CheckArduino)
+  {
+    if(1 == @TestBox::PcanBusOff)
+    {
+    snprintf(text, elcount(text), "PCANBussOff");
+    
+    length=strlen(text)+1;
+    for (i=0;i<length;i++) 
+    buffer[i]=text[i];
+    RS232Send(StoreComPortinNVM,buffer,length);
+    
+    setControlPanelOff(2000);
+//    write("PCANBussOff");
+    }
+    else
+    {
+      snprintf(text, elcount(text), "PCANBussOn");
+      
+      length=strlen(text)+1;
+      for (i=0;i<length;i++) 
+      buffer[i]=text[i];
+      RS232Send(StoreComPortinNVM,buffer,length);
+      
+      setControlPanelOff(2000);
+//      write("PCANBussOn");
+    }
+  }
+}
+
+on sysvar_update TestBox::ComPortButton
+{
+   
+  
+ if(1 == @TestBox::ComPortButton)
+{
+  if (1 == rs232Open(@TestBox::ComPortRead))
+  {
+    setControlPanelOff(7000);
+    
+    snprintf(text, elcount(text), "esti?");
+    
+    SetTimer(wait100forCheckComPort,100);
+    SetTimer(wait1000forCheckComPort,1000);
+  }
+  else
+  {
+    @sysvar::TestBox::CheckArduino = 0;
+  }
+}
+}
+
+
+
+
+//RS232OnReceive(dword port,byte recivebuffer,int recivebuffersize)
+//{
+//  write("s = %s, d= %d",recivebuffer,recivebuffer);
+//}
+
+on timer wait100forCheckComPort{
+  rs232Configure(@TestBox::ComPortRead,9600,8,1,0);
+  write("am configurat");
+}
+on timer wait1000forCheckComPort{
+  length=strlen(text)+1;
+   for (i=0;i<length;i++) 
+    buffer[i]=text[i];
+   if ( 1==RS232Send(@TestBox::ComPortRead,buffer,length) )
+    write("It works with port %d.",@TestBox::ComPortRead); 
+ setTimer(recive1000forCheckComPort,1000);
+ 
+}
+on timer recive1000forCheckComPort
+{
+ RS232Receive(@TestBox::ComPortRead,recivebuffer,recivebuffersize);
+ setTimer(reciveWait1000forCheckComPort,1000);
+ 
+}
+
+on timer reciveWait1000forCheckComPort
+{
+//  for(i=0;i<5;i++)
+//    {
+//      write("recivebuffer[%d] = %d\n",i,recivebuffer[i]);
+//    }
+  if((recivebuffer[0] == 115) && (recivebuffer[1] == 117) && (recivebuffer[2] == 110) && (recivebuffer[3] == 116) && (recivebuffer[4] == 13) && (recivebuffer[5] == 10)) 
+  {
+    StoreComPortinNVM = @TestBox::ComPortRead;
+  }
+  snprintf(text, elcount(text), "damivalori");
+  length=strlen(text)+1;
+  for (i=0;i<length;i++) 
+     buffer[i]=text[i];
+  RS232Send(@TestBox::ComPortRead,buffer,length);
+  
+  setTimer(reciveValues,1000);
+  //write("%d,%d,%d,%d,%d,%d,%d,%d,%d",recivebuffer[0],recivebuffer[1],recivebuffer[2],recivebuffer[3],recivebuffer[4],recivebuffer[5],recivebuffer[6],recivebuffer[7],recivebuffer[8]);
+  //rs232Close(16); 
+}
+
+on timer recive1000
+{
+  RS232Receive(StoreComPortinNVM,recivebuffer,recivebuffersize);
+ setTimer(reciveWait1000,1000);
+}
+
+on timer reciveWait1000
+{
+//  for(i=0;i<20;i++)
+//  {
+//  write("recivebuffer[%d] = %d",i,recivebuffer[i]);
+//  }
+}
+
+on timer controlPanel
+{
+  enableControl("TestBox", "SwitchLeftVoltage",1);
+  enableControl("TestBox", "SwitchRightVoltage",1);
+  enableControl("TestBox", "ComPortButton",1);
+  enableControl("TestBox", "SwitchLeftSensorID0",1);
+  enableControl("TestBox", "SwitchLeftSensorID1",1);
+  enableControl("TestBox", "SwitchLeftSensorID2",1);
+  enableControl("TestBox", "SwitchRightSensorID0",1);
+  enableControl("TestBox", "SwitchRightSensorID1",1);
+  enableControl("TestBox", "SwitchRightSensorID2",1);
+  enableControl("TestBox", "SwitchWakeUP",1);
+  enableControl("TestBox", "SwitchEthernetLeft",1);
+  enableControl("TestBox", "SwitchEthernetRight",1);
+  enableControl("TestBox", "SwitchVcanBusOff",1);
+  enableControl("TestBox", "SwitchPcanBusOff",1);
+  
+}
+
+void setControlPanelOff(int timeToTimer)
+{
+  enableControl("TestBox", "SwitchLeftVoltage",0);
+  enableControl("TestBox", "SwitchRightVoltage",0);
+  enableControl("TestBox", "ComPortButton",0);
+  enableControl("TestBox", "SwitchLeftSensorID0",0);
+  enableControl("TestBox", "SwitchLeftSensorID1",0);
+  enableControl("TestBox", "SwitchLeftSensorID2",0);
+  enableControl("TestBox", "SwitchRightSensorID0",0);
+  enableControl("TestBox", "SwitchRightSensorID1",0);
+  enableControl("TestBox", "SwitchRightSensorID2",0);
+  enableControl("TestBox", "SwitchWakeUP",0);
+  enableControl("TestBox", "SwitchEthernetLeft",0);
+  enableControl("TestBox", "SwitchEthernetRight",0);
+  enableControl("TestBox", "SwitchVcanBusOff",0);
+  enableControl("TestBox", "SwitchPcanBusOff",0);
+  
+  setTimer(controlPanel,timeToTimer);
+}
+
+on timer reciveValues
+{
+  RS232Receive(@TestBox::ComPortRead,recivebuffer,recivebuffersize);
+  setTimer(reciveValues2,1000);
+  
+}
+on timer reciveValues2
+{
+  if(recivebuffer[0] != 13)
+  {
+    sumArduinoOutput = recivebuffer[0] - 48;
+    ArduinoOutputDecimal = 1;
+    if(recivebuffer[1] != 13)
+    {
+      sumArduinoOutput =  sumArduinoOutput*10 + ((recivebuffer[1]-48) );
+      ArduinoOutputDecimal = 2;
+      if(recivebuffer[2] != 13)
+      {
+        sumArduinoOutput =  sumArduinoOutput*10 + ((recivebuffer[2]-48));
+        ArduinoOutputDecimal = 3;
+      }
+      if(recivebuffer[3] != 13)
+      {
+        sumArduinoOutput =  sumArduinoOutput*10 + ((recivebuffer[3]-48));
+        ArduinoOutputDecimal = 4;
+      }
+    }
+  }
+  
+  
+  for(i=0;i<=12;i++)
+  {
+    if(((sumArduinoOutput >> i) & 1) == 1)
+    {
+      sysSetVariableInt("TestBox",sysvarsVector[i],1);
+      if(0 == i)
+      {
+        sysSetVariableFloat(sysvar::TestBox::VoltageLeftDisplay,12.0);
+      }
+      else if(1 == i)
+      {
+        sysSetVariableFloat(sysvar::TestBox::VoltageRightDisplay,12.0);
+      }
+    }
+    else
+    {
+      if(0 == i)
+      {
+        sysSetVariableFloat(sysvar::TestBox::VoltageLeftDisplay,0.0);
+      }
+      else if(1 == i)
+      {
+        sysSetVariableFloat(sysvar::TestBox::VoltageRightDisplay,0.0);
+      }
+      sysSetVariableInt("TestBox",sysvarsVector[i],0);
+    }
+    
+  }
+  
+//  for(i=0;i<10;i++)
+//    {
+//      write("recivebuffer[%d] = %d\n",i,recivebuffer[i]);
+//    }
+//    write("sum = %d",sumArduinoOutput);
+    
+  setTimer(setArduino,2000);
+  
+}
+
+on timer setArduino
+{
+  sysSetVariableInt(sysvar::TestBox::CheckArduino,1);
+}
+on preStop
+{
+  rs232Close(StoreComPortinNVM);
+}
